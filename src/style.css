@@ -1,0 +1,245 @@
+@import 'primevue/resources/themes/lara-dark-blue/theme.css';
+@import 'primevue/resources/primevue.min.css';
+@import 'primeicons/primeicons.css';
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600&Anton+SC&display=swapdisplay=swap');
+
+:root {
+  font-family: 'Mulish', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  font-size: 14px;
+  color-scheme: dark;
+  background-color: #0A0A0A;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #0A0A0A;
+}
+
+#app {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+/* DataTable Styles */
+.p-datatable {
+  background: #0A0A0A !important;
+  border: 1px solid rgba(226, 223, 208, 0.1) !important;
+  border-radius: 8px !important;
+}
+
+.p-datatable .p-datatable-wrapper {
+  border-radius: 8px;
+  background-color: #0A0A0A !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background: #0A0A0A !important;
+  color: #E2DFD0 !important;
+  border-bottom: 1px solid rgba(226, 223, 208, 0.1) !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  background: #0A0A0A !important;
+  transition: background-color 0.3s ease;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  background: #111111 !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  border-bottom: 1px solid rgba(226, 223, 208, 0.05) !important;
+  padding: 0.85rem 1rem;
+  font-size: 0.85rem;
+}
+
+.p-datatable .p-paginator {
+  background: #0A0A0A !important;
+  border-top: 1px solid rgba(226, 223, 208, 0.1) !important;
+  padding: 0.75rem;
+}
+
+.p-datatable .p-paginator .p-paginator-current,
+.p-datatable .p-paginator .p-paginator-first,
+.p-datatable .p-paginator .p-paginator-last,
+.p-datatable .p-paginator .p-paginator-next,
+.p-datatable .p-paginator .p-paginator-prev,
+.p-datatable .p-paginator .p-paginator-page {
+  color: #E2DFD0 !important;
+}
+
+/* TabView Styles */
+.p-tabview {
+  background: transparent !important;
+  border: none !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.p-tabview .p-tabview-nav {
+  border: none !important;
+  background: transparent !important;
+  margin-bottom: 2rem !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 10 !important;
+}
+
+.p-tabview .p-tabview-nav::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: rgba(226, 223, 208, 0.1);
+}
+
+.p-tabview .p-tabview-nav li {
+  margin: 0 !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.p-tabview .p-tabview-nav .p-tabview-nav-link {
+  background: rgba(226, 223, 208, 0.05) !important;
+  border: 1px solid rgba(226, 223, 208, 0.1) !important;
+  color: #E2DFD0 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  margin: 0 !important;
+  position: relative !important;
+  z-index: 1;
+}
+
+.p-tabview .p-tabview-nav .p-tabview-nav-link:not(.p-disabled):focus {
+  box-shadow: none !important;
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: #F97300 !important;
+  color: #0C0C0C !important;
+  border-color: #F97300 !important;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(249, 115, 0, 0.2);
+}
+
+.p-tabview .p-tabview-nav li.p-highlight::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #F97300;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.p-tabview .p-tabview-panels {
+  background: #0A0A0A !important;
+  border: 1px solid rgba(226, 223, 208, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 2rem !important;
+  margin-top: 1rem !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Dialog Styles */
+.p-dialog {
+  background: #0A0A0A !important;
+}
+
+.p-dialog .p-dialog-header {
+  background: #0A0A0A !important;
+  color: #E2DFD0 !important;
+  border-bottom: 1px solid rgba(226, 223, 208, 0.1) !important;
+}
+
+.p-dialog .p-dialog-content {
+  background: #0A0A0A !important;
+  color: #E2DFD0 !important;
+}
+
+.p-dialog .p-dialog-footer {
+  background: #0A0A0A !important;
+  border-top: 1px solid rgba(226, 223, 208, 0.1) !important;
+}
+
+/* Input Styles */
+.p-inputtext {
+  background: #0A0A0A !important;
+  border: 1px solid rgba(226, 223, 208, 0.1) !important;
+  color: #E2DFD0 !important;
+}
+
+.p-inputtext:focus {
+  border-color: #F97300 !important;
+  box-shadow: 0 0 0 1px #F97300 !important;
+}
+
+/* FullCalendar dark theme overrides */
+.fc {
+  color: #E2DFD0 !important;
+}
+
+.fc-theme-bootstrap5 a {
+  color: #E2DFD0 !important;
+}
+
+.fc .fc-toolbar-title {
+  color: #E2DFD0 !important;
+}
+
+.fc .fc-button {
+  background-color: #F97300 !important;
+  border-color: #F97300 !important;
+  color: #0C0C0C !important;
+}
+
+.fc .fc-button:hover {
+  background-color: #e66900 !important;
+  border-color: #e66900 !important;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: #d66000 !important;
+  border-color: #d66000 !important;
+}
+
+.fc-theme-bootstrap5 .fc-list,
+.fc-theme-bootstrap5 .fc-scrollgrid,
+.fc-theme-bootstrap5 td,
+.fc-theme-bootstrap5 th {
+  border-color: rgba(226, 223, 208, 0.1) !important;
+}
+
+.fc .fc-day {
+  background-color: #0A0A0A !important;
+}
+
+.fc .fc-day-today {
+  background-color: rgba(249, 115, 0, 0.1) !important;
+}
+
+.fc-theme-bootstrap5 .fc-cell-shaded,
+.fc-theme-bootstrap5 .fc-day-disabled {
+  background-color: rgba(226, 223, 208, 0.05) !important;
+}
