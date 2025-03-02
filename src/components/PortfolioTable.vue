@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import AnimatedButton from './AnimatedButton.vue';
+import { ref, computed } from "vue";
+import AnimatedButton from "./AnimatedButton.vue";
 
 interface Portfolio {
   symbol: string;
@@ -11,7 +11,7 @@ interface Portfolio {
 
 interface Position {
   symbol: string;
-  type: 'BUY' | 'SELL';
+  type: "BUY" | "SELL";
   quantity: number;
   entryPrice: number;
   currentPrice: number;
@@ -24,29 +24,29 @@ defineProps<{
 }>();
 
 const filters = ref({
-  global: { value: null, matchMode: 'contains' }
+  global: { value: null, matchMode: "contains" },
 });
 
 // Sample open positions data
 const openPositions = ref<Position[]>([
   {
-    symbol: 'NIFTY25MAY18500CE',
-    type: 'BUY',
+    symbol: "NIFTY25MAY18500CE",
+    type: "BUY",
     quantity: 50,
     entryPrice: 150.25,
-    currentPrice: 175.50,
-    pnl: 1262.50,
-    pnlPercentage: 16.81
+    currentPrice: 175.5,
+    pnl: 1262.5,
+    pnlPercentage: 16.81,
   },
   {
-    symbol: 'BANKNIFTY25MAY44300PE',
-    type: 'SELL',
+    symbol: "BANKNIFTY25MAY44300PE",
+    type: "SELL",
     quantity: 25,
     entryPrice: 220.75,
     currentPrice: 195.25,
-    pnl: 637.50,
-    pnlPercentage: 11.55
-  }
+    pnl: 637.5,
+    pnlPercentage: 11.55,
+  },
 ]);
 
 const totalPnL = computed(() => {
@@ -55,21 +55,21 @@ const totalPnL = computed(() => {
 
 const totalPnLPercentage = computed(() => {
   const totalInvestment = openPositions.value.reduce(
-    (sum, position) => sum + (position.entryPrice * position.quantity),
-    0
+    (sum, position) => sum + position.entryPrice * position.quantity,
+    0,
   );
   return ((totalPnL.value / totalInvestment) * 100).toFixed(2);
 });
 
 const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR'
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
   }).format(value);
 };
 
 const getPnLClass = (value: number) => {
-  return value >= 0 ? 'positive' : 'negative';
+  return value >= 0 ? "positive" : "negative";
 };
 </script>
 
@@ -80,16 +80,16 @@ const getPnLClass = (value: number) => {
       <div class="table-header">
         <div class="search-wrapper">
           <i class="pi pi-search"></i>
-          <InputText 
-            v-model="filters['global'].value" 
-            placeholder="Search stocks..." 
+          <InputText
+            v-model="filters['global'].value"
+            placeholder="Search stocks..."
             class="search-input"
           />
         </div>
       </div>
-      <DataTable 
-        :value="portfolioData" 
-        :paginator="true" 
+      <DataTable
+        :value="portfolioData"
+        :paginator="true"
         :rows="5"
         :filters="filters"
         stripedRows
@@ -98,8 +98,18 @@ const getPnLClass = (value: number) => {
         scrollHeight="300px"
         :globalFilterFields="['symbol']"
       >
-        <Column field="symbol" header="Symbol" sortable style="width: 15%"></Column>
-        <Column field="quantity" header="Quantity" sortable style="width: 15%"></Column>
+        <Column
+          field="symbol"
+          header="Symbol"
+          sortable
+          style="width: 15%"
+        ></Column>
+        <Column
+          field="quantity"
+          header="Quantity"
+          sortable
+          style="width: 15%"
+        ></Column>
         <Column field="price" header="Price" sortable style="width: 25%">
           <template #body="{ data }">
             {{ formatCurrency(data.price) }}
@@ -113,19 +123,19 @@ const getPnLClass = (value: number) => {
         <Column header="Actions" style="width: 20%">
           <template #body>
             <div class="action-buttons">
-              <AnimatedButton 
+              <AnimatedButton
                 icon="pi pi-check-circle"
                 tooltip="Trade"
                 color="#22C55E"
                 @click="() => {}"
               />
-              <AnimatedButton 
+              <AnimatedButton
                 icon="pi pi-times-circle"
                 tooltip="Don't Trade"
                 color="#EF4444"
                 @click="() => {}"
               />
-              <AnimatedButton 
+              <AnimatedButton
                 icon="pi pi-bolt"
                 tooltip="Auto Trade"
                 @click="() => {}"
@@ -144,8 +154,8 @@ const getPnLClass = (value: number) => {
           {{ formatCurrency(totalPnL) }} ({{ totalPnLPercentage }}%)
         </div>
       </div>
-      <DataTable 
-        :value="openPositions" 
+      <DataTable
+        :value="openPositions"
         class="positions-table"
         :scrollable="true"
         scrollHeight="200px"
@@ -196,7 +206,7 @@ const getPnLClass = (value: number) => {
 }
 
 .portfolio-table-container {
-  background-color: #0C0C0C;
+  background-color: #0c0c0c;
   border-radius: 8px;
   padding: 1rem;
   border: 1px solid rgba(226, 223, 208, 0.1);
@@ -216,7 +226,7 @@ const getPnLClass = (value: number) => {
   left: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #E2DFD0;
+  color: #e2dfd0;
   opacity: 0.7;
 }
 
@@ -230,7 +240,7 @@ const getPnLClass = (value: number) => {
 }
 
 .positions-container {
-  background-color: #0C0C0C;
+  background-color: #0c0c0c;
   border-radius: 8px;
   padding: 1rem;
   border: 1px solid rgba(226, 223, 208, 0.1);
@@ -247,7 +257,7 @@ const getPnLClass = (value: number) => {
 .positions-header h3 {
   font-size: 1.1rem;
   font-weight: 400;
-  color: #E2DFD0;
+  color: #e2dfd0;
   margin: 0;
 }
 
@@ -267,12 +277,12 @@ const getPnLClass = (value: number) => {
 
 .position-type.buy {
   background: rgba(34, 197, 94, 0.1);
-  color: #22C55E;
+  color: #22c55e;
 }
 
 .position-type.sell {
   background: rgba(239, 68, 68, 0.1);
-  color: #EF4444;
+  color: #ef4444;
 }
 
 .pnl {
@@ -280,11 +290,11 @@ const getPnLClass = (value: number) => {
 }
 
 .positive {
-  color: #22C55E;
+  color: #22c55e;
 }
 
 .negative {
-  color: #EF4444;
+  color: #ef4444;
 }
 
 .action-buttons {

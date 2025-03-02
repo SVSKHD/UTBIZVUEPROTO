@@ -3,10 +3,9 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount } from 'vue'
+import { onBeforeMount } from "vue";
 
 onBeforeMount(() => {
-  document.title = 'UTBIZ | Trade-Home'
-})
-
+  document.title = "UTBIZ | Trade-Home";
+});
 </script>

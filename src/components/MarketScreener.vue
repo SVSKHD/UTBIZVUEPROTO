@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 const props = defineProps<{
   broker: string;
@@ -13,25 +13,29 @@ interface MarketData {
 }
 
 const marketData = ref<MarketData[]>([
-  { symbol: 'NIFTY50', change: 1.2, volume: 125000000, rsi: 62 },
-  { symbol: 'BANKNIFTY', change: -0.8, volume: 85000000, rsi: 45 },
-  { symbol: 'FINNIFTY', change: 0.5, volume: 45000000, rsi: 55 },
+  { symbol: "NIFTY50", change: 1.2, volume: 125000000, rsi: 62 },
+  { symbol: "BANKNIFTY", change: -0.8, volume: 85000000, rsi: 45 },
+  { symbol: "FINNIFTY", change: 0.5, volume: 45000000, rsi: 55 },
 ]);
 
 const getChangeColor = (change: number) => {
-  return change > 0 ? 'text-green-500' : change < 0 ? 'text-red-500' : 'text-gray-500';
+  return change > 0
+    ? "text-green-500"
+    : change < 0
+      ? "text-red-500"
+      : "text-gray-500";
 };
 
 const getRSIIndicator = (rsi: number) => {
-  if (rsi >= 70) return 'Overbought';
-  if (rsi <= 30) return 'Oversold';
-  return 'Neutral';
+  if (rsi >= 70) return "Overbought";
+  if (rsi <= 30) return "Oversold";
+  return "Neutral";
 };
 
 const getRSIColor = (rsi: number) => {
-  if (rsi >= 70) return 'text-red-500';
-  if (rsi <= 30) return 'text-green-500';
-  return 'text-gray-400';
+  if (rsi >= 70) return "text-red-500";
+  if (rsi <= 30) return "text-green-500";
+  return "text-gray-400";
 };
 </script>
 
@@ -46,7 +50,7 @@ const getRSIColor = (rsi: number) => {
         <div class="card-header">
           <span class="symbol">{{ data.symbol }}</span>
           <span :class="['change', getChangeColor(data.change)]">
-            {{ data.change > 0 ? '+' : '' }}{{ data.change }}%
+            {{ data.change > 0 ? "+" : "" }}{{ data.change }}%
           </span>
         </div>
         <div class="card-content">
@@ -68,7 +72,7 @@ const getRSIColor = (rsi: number) => {
 
 <style scoped>
 .market-screener {
-  background-color: #0C0C0C;
+  background-color: #0c0c0c;
   border-radius: 8px;
   padding: 1.5rem;
   transition: all 0.3s ease;
@@ -84,12 +88,12 @@ const getRSIColor = (rsi: number) => {
 .screener-header h3 {
   margin: 0;
   font-size: 1.1rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
 }
 
 .broker-tag {
-  background-color: #F97300;
-  color: #0C0C0C;
+  background-color: #f97300;
+  color: #0c0c0c;
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -103,7 +107,7 @@ const getRSIColor = (rsi: number) => {
 }
 
 .screener-card {
-  background-color: #0C0C0C;
+  background-color: #0c0c0c;
   border-radius: 6px;
   padding: 1rem;
   transition: all 0.3s ease;
@@ -124,7 +128,7 @@ const getRSIColor = (rsi: number) => {
 .symbol {
   font-size: 1rem;
   font-weight: 500;
-  color: #E2DFD0;
+  color: #e2dfd0;
 }
 
 .change {
@@ -146,7 +150,7 @@ const getRSIColor = (rsi: number) => {
 
 .metric .label {
   font-size: 0.8rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
   opacity: 0.7;
 }
 
@@ -156,18 +160,18 @@ const getRSIColor = (rsi: number) => {
 }
 
 .text-green-500 {
-  color: #10B981;
+  color: #10b981;
 }
 
 .text-red-500 {
-  color: #EF4444;
+  color: #ef4444;
 }
 
 .text-gray-400 {
-  color: #9CA3AF;
+  color: #9ca3af;
 }
 
 .text-gray-500 {
-  color: #6B7280;
+  color: #6b7280;
 }
 </style>

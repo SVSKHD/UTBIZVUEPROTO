@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import TradeCalendar from './TradeCalendar.vue';
+import { ref } from "vue";
+import TradeCalendar from "./TradeCalendar.vue";
 
-const activeTab = ref('zerodha');
+const activeTab = ref("zerodha");
 </script>
 
 <template>
@@ -39,15 +39,15 @@ const activeTab = ref('zerodha');
 :deep(.p-tabview-nav-link) {
   background: rgba(226, 223, 208, 0.05) !important;
   border: 1px solid rgba(226, 223, 208, 0.1) !important;
-  color: #E2DFD0 !important;
+  color: #e2dfd0 !important;
   padding: 0.75rem 1.5rem !important;
   border-radius: 8px !important;
   transition: all 0.3s ease !important;
 }
 
 :deep(.p-tabview-selected .p-tabview-nav-link) {
-  background: #F97300 !important;
-  color: #0C0C0C !important;
-  border-color: #F97300 !important;
+  background: #f97300 !important;
+  color: #0c0c0c !important;
+  border-color: #f97300 !important;
 }
 </style>

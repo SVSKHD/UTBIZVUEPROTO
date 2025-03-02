@@ -1,27 +1,22 @@
 <script setup lang="ts">
-const todayBalance = {
-  value: 1250000,
-  change: 1.2,
-};
+import { defineProps } from 'vue';
 
-const stats = [
-  {
-    label: "Total Value",
-    value: "₹12,50,000",
-    icon: "pi pi-wallet",
-  },
-  {
-    label: "Today's P&L",
-    value: "₹15,000",
-    change: 1.2,
-    icon: "pi pi-chart-line",
-  },
-  {
-    label: "Available Funds",
-    value: "₹2,70,000",
-    icon: "pi pi-money-bill",
-  },
-];
+interface Balance {
+    value: number;
+    change: number;
+}
+
+interface Stat {
+    label: string;
+    value: string;
+    change?: number;
+    icon: string;
+}
+
+const props = defineProps<{
+    balance: Balance;
+    stats: Stat[];
+}>();
 </script>
 
 <template>
@@ -29,12 +24,12 @@ const stats = [
     <div class="balance-card">
       <div class="balance-header">Today's Balance</div>
       <div class="balance-amount">
-        ₹{{ todayBalance.value.toLocaleString("en-IN") }}
-        <span class="change">+{{ todayBalance.change }}%</span>
+        ₹{{ props.balance.value.toLocaleString("en-IN") }}
+        <span class="change">+{{ props.balance.change }}%</span>
       </div>
     </div>
     <div class="stats-grid">
-      <div v-for="stat in stats" :key="stat.label" class="stat-card">
+      <div v-for="stat in props.stats" :key="stat.label" class="stat-card">
         <div class="stat-icon">
           <i :class="stat.icon"></i>
         </div>

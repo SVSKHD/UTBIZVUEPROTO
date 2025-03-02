@@ -7,9 +7,12 @@
             <div class="contact-header">
               <h1>Contact Us</h1>
               <p class="forex-description">
-                Experience the power of professional Forex Trading with UTBIZ. Our advanced platform provides real-time market data, 
-                sophisticated technical analysis tools, and seamless execution for currency pairs trading. Join thousands of successful 
-                traders who trust our robust infrastructure and expert support for their Forex trading journey.
+                Experience the power of professional Forex Trading with UTBIZ.
+                Our advanced platform provides real-time market data,
+                sophisticated technical analysis tools, and seamless execution
+                for currency pairs trading. Join thousands of successful traders
+                who trust our robust infrastructure and expert support for their
+                Forex trading journey.
               </p>
               <div class="features-grid">
                 <div class="feature-item">
@@ -34,22 +37,35 @@
               <h2>Get in Touch</h2>
               <div class="form-group">
                 <label>Name</label>
-                <InputText v-model="formData.name" placeholder="Enter your name" />
+                <InputText
+                  v-model="formData.name"
+                  placeholder="Enter your name"
+                />
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <InputText v-model="formData.email" placeholder="Enter your email" />
+                <InputText
+                  v-model="formData.email"
+                  placeholder="Enter your email"
+                />
               </div>
               <div class="form-group">
                 <label>Phone</label>
-                <InputText v-model="formData.phone" placeholder="Enter your phone number" />
+                <InputText
+                  v-model="formData.phone"
+                  placeholder="Enter your phone number"
+                />
               </div>
               <div class="form-group">
                 <label>Message</label>
-                <Textarea v-model="formData.message" rows="5" placeholder="How can we help you?" />
+                <Textarea
+                  v-model="formData.message"
+                  rows="5"
+                  placeholder="How can we help you?"
+                />
               </div>
-              <AnimatedButton 
-                label="Send Message" 
+              <AnimatedButton
+                label="Send Message"
                 icon="pi pi-send"
                 @click="submitForm"
               />
@@ -62,20 +78,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import MainLayout from '../layouts/MainLayout.vue';
-import AnimatedButton from '../components/AnimatedButton.vue';
+import { ref } from "vue";
+import MainLayout from "../layouts/MainLayout.vue";
+import AnimatedButton from "../components/AnimatedButton.vue";
 
 const formData = ref({
-  name: '',
-  email: '',
-  phone: '',
-  message: ''
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
 });
 
 const submitForm = () => {
   // Handle form submission
-  console.log('Form submitted:', formData.value);
+  console.log("Form submitted:", formData.value);
 };
 </script>
 
@@ -93,8 +109,10 @@ const submitForm = () => {
   position: relative;
   width: 100%;
   min-height: calc(100vh - 200px);
-  background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.85)),
-              url('https://images.unsplash.com/photo-1611689342806-0863700ce1e4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+  background:
+    linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.85)),
+    url("https://images.unsplash.com/photo-1611689342806-0863700ce1e4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+      center/cover no-repeat;
   background-attachment: fixed;
   display: flex;
   justify-content: center;
@@ -132,25 +150,25 @@ const submitForm = () => {
 
 .contact-header h1 {
   font-size: 3rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
   margin: 0 0 2rem;
   font-weight: 600;
   position: relative;
 }
 
 .contact-header h1::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -0.5rem;
   left: 0;
   width: 60px;
   height: 4px;
-  background: #F97300;
+  background: #f97300;
   border-radius: 4px;
 }
 
 .forex-description {
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 3rem;
@@ -168,7 +186,7 @@ const submitForm = () => {
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
   background: rgba(249, 115, 0, 0.1);
   padding: 1rem;
   border-radius: 16px;
@@ -181,7 +199,7 @@ const submitForm = () => {
 
 .feature-item i {
   font-size: 1.5rem;
-  color: #F97300;
+  color: #f97300;
   background: rgba(249, 115, 0, 0.2);
   padding: 1rem;
   border-radius: 12px;
@@ -202,7 +220,7 @@ const submitForm = () => {
 }
 
 .contact-form h2 {
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-size: 2rem;
   margin: 0 0 2rem;
   font-weight: 500;
@@ -214,7 +232,7 @@ const submitForm = () => {
 
 .form-group label {
   display: block;
-  color: #E2DFD0;
+  color: #e2dfd0;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
 }
@@ -223,7 +241,7 @@ const submitForm = () => {
   width: 100%;
   background: rgba(10, 10, 10, 0.6) !important;
   border: 1px solid rgba(226, 223, 208, 0.2) !important;
-  color: #E2DFD0 !important;
+  color: #e2dfd0 !important;
   padding: 1rem !important;
   font-size: 1rem !important;
   transition: all 0.3s ease;
@@ -231,12 +249,12 @@ const submitForm = () => {
 }
 
 :deep(.p-inputtext:focus) {
-  border-color: #F97300 !important;
+  border-color: #f97300 !important;
   box-shadow: 0 0 0 2px rgba(249, 115, 0, 0.2) !important;
 }
 
 :deep(.p-inputtext:hover) {
-  border-color: #F97300 !important;
+  border-color: #f97300 !important;
 }
 
 :deep(.animated-btn) {

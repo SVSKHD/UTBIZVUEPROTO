@@ -15,8 +15,13 @@
         <div v-for="index in indices" :key="index.symbol" class="index-card">
           <div class="index-info">
             <h3>{{ index.symbol }}</h3>
-            <div :class="['index-change', index.change >= 0 ? 'positive' : 'negative']">
-              {{ index.change >= 0 ? '+' : '' }}{{ index.change }}%
+            <div
+              :class="[
+                'index-change',
+                index.change >= 0 ? 'positive' : 'negative',
+              ]"
+            >
+              {{ index.change >= 0 ? "+" : "" }}{{ index.change }}%
             </div>
           </div>
           <div class="index-price">{{ formatPrice(index.price) }}</div>
@@ -27,26 +32,34 @@
         <div class="chart-header">
           <div class="symbol-info">
             <h3>{{ selectedSymbol }}</h3>
-            <div :class="['price-change', selectedSymbolData.change >= 0 ? 'positive' : 'negative']">
+            <div
+              :class="[
+                'price-change',
+                selectedSymbolData.change >= 0 ? 'positive' : 'negative',
+              ]"
+            >
               {{ formatPrice(selectedSymbolData.price) }}
-              <span>{{ selectedSymbolData.change >= 0 ? '+' : '' }}{{ selectedSymbolData.change }}%</span>
+              <span
+                >{{ selectedSymbolData.change >= 0 ? "+" : ""
+                }}{{ selectedSymbolData.change }}%</span
+              >
             </div>
           </div>
           <div class="chart-controls">
-            <Button 
-              v-for="interval in timeIntervals" 
+            <Button
+              v-for="interval in timeIntervals"
               :key="interval"
               :label="interval"
-              :class="['interval-btn', { active: selectedInterval === interval }]"
+              :class="[
+                'interval-btn',
+                { active: selectedInterval === interval },
+              ]"
               @click="selectedInterval = interval"
             />
           </div>
         </div>
         <div class="chart">
-          <Line
-            :data="chartData"
-            :options="chartOptions"
-          />
+          <Line :data="chartData" :options="chartOptions" />
         </div>
       </div>
 
@@ -64,8 +77,13 @@
                 </Column>
                 <Column field="change" header="Change">
                   <template #body="{ data }">
-                    <span :class="['change-value', data.change >= 0 ? 'positive' : 'negative']">
-                      {{ data.change >= 0 ? '+' : '' }}{{ data.change }}%
+                    <span
+                      :class="[
+                        'change-value',
+                        data.change >= 0 ? 'positive' : 'negative',
+                      ]"
+                    >
+                      {{ data.change >= 0 ? "+" : "" }}{{ data.change }}%
                     </span>
                   </template>
                 </Column>
@@ -86,8 +104,13 @@
                 </Column>
                 <Column field="change" header="Change">
                   <template #body="{ data }">
-                    <span :class="['change-value', data.change >= 0 ? 'positive' : 'negative']">
-                      {{ data.change >= 0 ? '+' : '' }}{{ data.change }}%
+                    <span
+                      :class="[
+                        'change-value',
+                        data.change >= 0 ? 'positive' : 'negative',
+                      ]"
+                    >
+                      {{ data.change >= 0 ? "+" : "" }}{{ data.change }}%
                     </span>
                   </template>
                 </Column>
@@ -106,60 +129,89 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
-import MainLayout from '../layouts/MainLayout.vue';
-import { Line } from 'vue-chartjs';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { ref, onMounted, computed } from "vue";
+import MainLayout from "../layouts/MainLayout.vue";
+import { Line } from "vue-chartjs";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+);
 
-const searchQuery = ref('');
-const selectedSymbol = ref('NIFTY50');
-const selectedInterval = ref('1D');
+const searchQuery = ref("");
+const selectedSymbol = ref("NIFTY50");
+const selectedInterval = ref("1D");
 const activeMoversTab = ref(0);
 
-const timeIntervals = ['1D', '1W', '1M', '3M', '1Y', 'ALL'];
+const timeIntervals = ["1D", "1W", "1M", "3M", "1Y", "ALL"];
 
 // Sample data
 const indices = ref([
-  { symbol: 'NIFTY50', price: 19850.25, change: 1.2 },
-  { symbol: 'BANKNIFTY', price: 44250.75, change: -0.8 },
-  { symbol: 'FINNIFTY', price: 20150.50, change: 0.5 }
+  { symbol: "NIFTY50", price: 19850.25, change: 1.2 },
+  { symbol: "BANKNIFTY", price: 44250.75, change: -0.8 },
+  { symbol: "FINNIFTY", price: 20150.5, change: 0.5 },
 ]);
 
 const selectedSymbolData = computed(() => {
-  return indices.value.find(index => index.symbol === selectedSymbol.value) || indices.value[0];
+  return (
+    indices.value.find((index) => index.symbol === selectedSymbol.value) ||
+    indices.value[0]
+  );
 });
 
 const topGainers = ref([
-  { symbol: 'RELIANCE', price: 2457.85, change: 3.2, volume: 5250000 },
-  { symbol: 'TCS', price: 3890.25, change: 2.8, volume: 1850000 },
-  { symbol: 'HDFCBANK', price: 1680.75, change: 2.5, volume: 3150000 },
-  { symbol: 'INFY', price: 1475.30, change: 2.1, volume: 2750000 },
-  { symbol: 'ICICIBANK', price: 1025.80, change: 1.9, volume: 4150000 }
+  { symbol: "RELIANCE", price: 2457.85, change: 3.2, volume: 5250000 },
+  { symbol: "TCS", price: 3890.25, change: 2.8, volume: 1850000 },
+  { symbol: "HDFCBANK", price: 1680.75, change: 2.5, volume: 3150000 },
+  { symbol: "INFY", price: 1475.3, change: 2.1, volume: 2750000 },
+  { symbol: "ICICIBANK", price: 1025.8, change: 1.9, volume: 4150000 },
 ]);
 
 const topLosers = ref([
-  { symbol: 'TATASTEEL', price: 125.30, change: -2.8, volume: 6250000 },
-  { symbol: 'HINDALCO', price: 485.25, change: -2.5, volume: 3850000 },
-  { symbol: 'COALINDIA', price: 245.75, change: -2.2, volume: 5150000 },
-  { symbol: 'ONGC', price: 175.40, change: -1.9, volume: 4750000 },
-  { symbol: 'NTPC', price: 195.60, change: -1.7, volume: 3950000 }
+  { symbol: "TATASTEEL", price: 125.3, change: -2.8, volume: 6250000 },
+  { symbol: "HINDALCO", price: 485.25, change: -2.5, volume: 3850000 },
+  { symbol: "COALINDIA", price: 245.75, change: -2.2, volume: 5150000 },
+  { symbol: "ONGC", price: 175.4, change: -1.9, volume: 4750000 },
+  { symbol: "NTPC", price: 195.6, change: -1.7, volume: 3950000 },
 ]);
 
 // Chart data
 const chartData = {
-  labels: ['9:15', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '15:30'],
+  labels: [
+    "9:15",
+    "10:00",
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "15:30",
+  ],
   datasets: [
     {
       label: selectedSymbol.value,
       data: [19750, 19800, 19825, 19790, 19815, 19845, 19860, 19850],
-      borderColor: '#F97300',
-      backgroundColor: 'rgba(249, 115, 0, 0.1)',
+      borderColor: "#F97300",
+      backgroundColor: "rgba(249, 115, 0, 0.1)",
       tension: 0.4,
-      fill: true
-    }
-  ]
+      fill: true,
+    },
+  ],
 };
 
 const chartOptions = {
@@ -167,34 +219,34 @@ const chartOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      display: false
-    }
+      display: false,
+    },
   },
   scales: {
     y: {
       grid: {
-        color: 'rgba(226, 223, 208, 0.1)'
+        color: "rgba(226, 223, 208, 0.1)",
       },
       ticks: {
-        color: '#E2DFD0'
-      }
+        color: "#E2DFD0",
+      },
     },
     x: {
       grid: {
-        color: 'rgba(226, 223, 208, 0.1)'
+        color: "rgba(226, 223, 208, 0.1)",
       },
       ticks: {
-        color: '#E2DFD0'
-      }
-    }
-  }
+        color: "#E2DFD0",
+      },
+    },
+  },
 };
 
 const formatPrice = (price: number) => {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    minimumFractionDigits: 2
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    minimumFractionDigits: 2,
   }).format(price);
 };
 
@@ -205,7 +257,7 @@ const formatVolume = (volume: number) => {
   if (volume >= 100000) {
     return `${(volume / 100000).toFixed(2)}L`;
   }
-  return volume.toLocaleString('en-IN');
+  return volume.toLocaleString("en-IN");
 };
 </script>
 
@@ -225,7 +277,7 @@ const formatVolume = (volume: number) => {
 }
 
 .markets-header h2 {
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-size: 1.8rem;
   margin: 0;
 }
@@ -257,7 +309,7 @@ const formatVolume = (volume: number) => {
 
 .index-info h3 {
   margin: 0;
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-size: 1.2rem;
 }
 
@@ -270,7 +322,7 @@ const formatVolume = (volume: number) => {
 
 .index-price {
   font-size: 1.5rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-weight: 500;
 }
 
@@ -289,7 +341,7 @@ const formatVolume = (volume: number) => {
 
 .symbol-info h3 {
   margin: 0 0 0.5rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-size: 1.4rem;
 }
 
@@ -315,15 +367,15 @@ const formatVolume = (volume: number) => {
 .interval-btn {
   background: transparent !important;
   border: 1px solid rgba(226, 223, 208, 0.1) !important;
-  color: #E2DFD0 !important;
+  color: #e2dfd0 !important;
   padding: 0.4rem 0.8rem !important;
   font-size: 0.9rem !important;
 }
 
 .interval-btn.active {
-  background: #F97300 !important;
-  border-color: #F97300 !important;
-  color: #0C0C0C !important;
+  background: #f97300 !important;
+  border-color: #f97300 !important;
+  color: #0c0c0c !important;
 }
 
 .chart {
@@ -338,18 +390,18 @@ const formatVolume = (volume: number) => {
 
 .movers-header h3 {
   margin: 0 0 1.5rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-size: 1.4rem;
 }
 
 .positive {
   background: rgba(34, 197, 94, 0.1);
-  color: #22C55E;
+  color: #22c55e;
 }
 
 .negative {
   background: rgba(239, 68, 68, 0.1);
-  color: #EF4444;
+  color: #ef4444;
 }
 
 .change-value {

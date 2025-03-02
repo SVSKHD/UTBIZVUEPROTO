@@ -46,35 +46,35 @@
 </template>
 
 <script setup lang="ts">
-import MainLayout from '../layouts/MainLayout.vue'
-import DashboardOverview from '../components/DashboardOverview.vue'
-import MarketScreener from '../components/MarketScreener.vue'
-import PositionGraphs from '../components/PositionGraphs.vue'
-import PortfolioTable from '../components/PortfolioTable.vue'
+import MainLayout from "../layouts/MainLayout.vue";
+import DashboardOverview from "../components/DashboardOverview.vue";
+import MarketScreener from "../components/MarketScreener.vue";
+import PositionGraphs from "../components/PositionGraphs.vue";
+import PortfolioTable from "../components/PortfolioTable.vue";
 
 // Sample data for each broker
 const zerodhaData = [
-  { symbol: 'RELIANCE', quantity: 100, price: 2457.85, value: 245785 },
-  { symbol: 'TCS', quantity: 50, price: 3890.25, value: 194512.50 },
-  { symbol: 'HDFCBANK', quantity: 75, price: 1680.75, value: 126056.25 },
-  { symbol: 'INFY', quantity: 120, price: 1475.30, value: 177036 },
-  { symbol: 'ICICIBANK', quantity: 150, price: 1025.80, value: 153870 },
+  { symbol: "RELIANCE", quantity: 100, price: 2457.85, value: 245785 },
+  { symbol: "TCS", quantity: 50, price: 3890.25, value: 194512.5 },
+  { symbol: "HDFCBANK", quantity: 75, price: 1680.75, value: 126056.25 },
+  { symbol: "INFY", quantity: 120, price: 1475.3, value: 177036 },
+  { symbol: "ICICIBANK", quantity: 150, price: 1025.8, value: 153870 },
 ];
 
 const fyersData = [
-  { symbol: 'BAJFINANCE', quantity: 30, price: 7285.20, value: 218556 },
-  { symbol: 'BHARTIARTL', quantity: 45, price: 890.50, value: 40072.50 },
-  { symbol: 'WIPRO', quantity: 60, price: 485.25, value: 29115 },
-  { symbol: 'ASIANPAINT', quantity: 25, price: 3250.75, value: 81268.75 },
-  { symbol: 'TATASTEEL', quantity: 80, price: 125.30, value: 10024 },
+  { symbol: "BAJFINANCE", quantity: 30, price: 7285.2, value: 218556 },
+  { symbol: "BHARTIARTL", quantity: 45, price: 890.5, value: 40072.5 },
+  { symbol: "WIPRO", quantity: 60, price: 485.25, value: 29115 },
+  { symbol: "ASIANPAINT", quantity: 25, price: 3250.75, value: 81268.75 },
+  { symbol: "TATASTEEL", quantity: 80, price: 125.3, value: 10024 },
 ];
 
 const dhanData = [
-  { symbol: 'LT', quantity: 25, price: 3150.75, value: 78768.75 },
-  { symbol: 'MARUTI', quantity: 20, price: 9875.30, value: 197506 },
-  { symbol: 'SUNPHARMA', quantity: 150, price: 1142.80, value: 171420 },
-  { symbol: 'TITAN', quantity: 40, value: 3275.45, value: 131018 },
-  { symbol: 'ULTRACEMCO', quantity: 15, price: 8890.25, value: 133353.75 },
+  { symbol: "LT", quantity: 25, price: 3150.75, value: 78768.75 },
+  { symbol: "MARUTI", quantity: 20, price: 9875.3, value: 197506 },
+  { symbol: "SUNPHARMA", quantity: 150, price: 1142.8, value: 171420 },
+  { symbol: "TITAN", quantity: 40, value: 3275.45, value: 131018 },
+  { symbol: "ULTRACEMCO", quantity: 15, price: 8890.25, value: 133353.75 },
 ];
 </script>
 
@@ -112,7 +112,7 @@ const dhanData = [
 .tabs-container {
   width: 100%;
   display: flex;
-  margin:2rem;
+  margin: 2rem;
   align-items: flex-start;
   gap: 1rem;
   position: relative;

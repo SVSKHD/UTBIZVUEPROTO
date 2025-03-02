@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from "vue";
 
 const props = defineProps<{
   label?: string;
@@ -10,19 +10,19 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'click', event: MouseEvent): void;
+  (e: "click", event: MouseEvent): void;
 }>();
 
-const defaultColor = '#F97300';
+const defaultColor = "#F97300";
 const buttonColor = computed(() => props.color || defaultColor);
 
 const buttonClasses = computed(() => ({
-  'animated-btn': true,
-  'disabled': props.disabled
+  "animated-btn": true,
+  disabled: props.disabled,
 }));
 
 const buttonStyles = computed(() => ({
-  '--button-color': buttonColor.value
+  "--button-color": buttonColor.value,
 }));
 </script>
 
@@ -55,7 +55,7 @@ const buttonStyles = computed(() => ({
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   font-size: 1rem;
   isolation: isolate;
   min-width: 120px;

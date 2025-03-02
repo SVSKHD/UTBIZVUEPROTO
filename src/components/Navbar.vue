@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const currentTime = new Date().toLocaleTimeString();
@@ -8,19 +8,19 @@ const showBrokerDialog = ref(false);
 const showProfileDialog = ref(false);
 const showAIDialog = ref(false);
 
-const selectedTimeZone = ref('IST');
-const selectedBroker = ref('Zerodha');
+const selectedTimeZone = ref("IST");
+const selectedBroker = ref("Zerodha");
 
 const newBroker = ref({
-  name: '',
-  apiKey: '',
-  secretKey: ''
+  name: "",
+  apiKey: "",
+  secretKey: "",
 });
 
 const addBroker = () => {
   // Handle broker addition logic here
   showBrokerDialog.value = false;
-  newBroker.value = { name: '', apiKey: '', secretKey: '' };
+  newBroker.value = { name: "", apiKey: "", secretKey: "" };
 };
 
 const navigateTo = (route: string) => {
@@ -43,18 +43,53 @@ const navigateTo = (route: string) => {
       </div>
       <div class="nav-bottom">
         <div class="nav-items">
-          <Button class="premium-btn" label="Dashboard" icon="pi pi-chart-line" @click="navigateTo('/')" />
-          <Button class="premium-btn" label="Calendar" icon="pi pi-calendar" @click="navigateTo('/calendar')" />
-          <Button class="premium-btn" label="Markets" icon="pi pi-chart-bar" @click="navigateTo('/markets')" />
-          <Button class="premium-btn" @click="showBrokerDialog = true" label="Add Broker" icon="pi pi-plus" />
-          <Button class="premium-btn" @click="showAIDialog = true" label="AI Assistant" icon="pi pi-bolt" />
-          <Button class="premium-btn" @click="showProfileDialog = true" label="Profile" icon="pi pi-user" />
+          <Button
+            class="premium-btn"
+            label="Dashboard"
+            icon="pi pi-chart-line"
+            @click="navigateTo('/')"
+          />
+          <Button
+            class="premium-btn"
+            label="Calendar"
+            icon="pi pi-calendar"
+            @click="navigateTo('/calendar')"
+          />
+          <Button
+            class="premium-btn"
+            label="Markets"
+            icon="pi pi-chart-bar"
+            @click="navigateTo('/markets')"
+          />
+          <Button
+            class="premium-btn"
+            @click="showBrokerDialog = true"
+            label="Add Broker"
+            icon="pi pi-plus"
+          />
+          <Button
+            class="premium-btn"
+            @click="showAIDialog = true"
+            label="AI Assistant"
+            icon="pi pi-bolt"
+          />
+          <Button
+            class="premium-btn"
+            @click="showProfileDialog = true"
+            label="Profile"
+            icon="pi pi-user"
+          />
         </div>
       </div>
     </div>
 
     <!-- Broker Dialog -->
-    <Dialog v-model:visible="showBrokerDialog" header="Add New Broker" modal class="broker-dialog">
+    <Dialog
+      v-model:visible="showBrokerDialog"
+      header="Add New Broker"
+      modal
+      class="broker-dialog"
+    >
       <div class="dialog-content">
         <div class="input-group">
           <label>Broker Name</label>
@@ -62,21 +97,42 @@ const navigateTo = (route: string) => {
         </div>
         <div class="input-group">
           <label>API Key</label>
-          <InputText v-model="newBroker.apiKey" type="password" placeholder="Enter API key" />
+          <InputText
+            v-model="newBroker.apiKey"
+            type="password"
+            placeholder="Enter API key"
+          />
         </div>
         <div class="input-group">
           <label>Secret Key</label>
-          <InputText v-model="newBroker.secretKey" type="password" placeholder="Enter secret key" />
+          <InputText
+            v-model="newBroker.secretKey"
+            type="password"
+            placeholder="Enter secret key"
+          />
         </div>
       </div>
       <template #footer>
-        <Button label="Cancel" @click="showBrokerDialog = false" class="p-button-text" />
-        <Button label="Add Broker" @click="addBroker" class="p-button-primary" />
+        <Button
+          label="Cancel"
+          @click="showBrokerDialog = false"
+          class="p-button-text"
+        />
+        <Button
+          label="Add Broker"
+          @click="addBroker"
+          class="p-button-primary"
+        />
       </template>
     </Dialog>
 
     <!-- Profile Dialog -->
-    <Dialog v-model:visible="showProfileDialog" header="Profile Settings" modal class="profile-dialog">
+    <Dialog
+      v-model:visible="showProfileDialog"
+      header="Profile Settings"
+      modal
+      class="profile-dialog"
+    >
       <div class="dialog-content">
         <div class="profile-section">
           <div class="profile-header">
@@ -108,23 +164,40 @@ const navigateTo = (route: string) => {
             </div>
             <div class="input-group">
               <label>Time Zone</label>
-              <Dropdown v-model="selectedTimeZone" :options="['IST', 'UTC', 'EST', 'PST']" placeholder="Select Time Zone" />
+              <Dropdown
+                v-model="selectedTimeZone"
+                :options="['IST', 'UTC', 'EST', 'PST']"
+                placeholder="Select Time Zone"
+              />
             </div>
             <div class="input-group">
               <label>Default Broker</label>
-              <Dropdown v-model="selectedBroker" :options="['Zerodha', 'Fyers', 'Dhan']" placeholder="Select Default Broker" />
+              <Dropdown
+                v-model="selectedBroker"
+                :options="['Zerodha', 'Fyers', 'Dhan']"
+                placeholder="Select Default Broker"
+              />
             </div>
           </div>
         </div>
       </div>
       <template #footer>
-        <Button label="Close" @click="showProfileDialog = false" class="p-button-text" />
+        <Button
+          label="Close"
+          @click="showProfileDialog = false"
+          class="p-button-text"
+        />
         <Button label="Save Changes" class="p-button-primary" />
       </template>
     </Dialog>
 
     <!-- AI Assistant Dialog -->
-    <Dialog v-model:visible="showAIDialog" header="AI Trading Assistant" modal class="ai-dialog">
+    <Dialog
+      v-model:visible="showAIDialog"
+      header="AI Trading Assistant"
+      modal
+      class="ai-dialog"
+    >
       <div class="dialog-content">
         <div class="ai-section">
           <div class="ai-header">
@@ -175,7 +248,7 @@ const navigateTo = (route: string) => {
 
 <style scoped>
 .navbar {
-  background-color: #0C0C0C;
+  background-color: #0c0c0c;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid rgba(226, 223, 208, 0.1);
 }
@@ -212,24 +285,23 @@ const navigateTo = (route: string) => {
 }
 
 .brand-text {
-  font-family: 'AntonSC', sans-serif;
+  font-family: "AntonSC", sans-serif;
   letter-spacing: 4px;
 }
 
 /* Make "UT" small and orange */
 .ut {
   font-size: 3rem; /* Smaller font size */
-  color: #F97300;    /* Orange color */
+  color: #f97300; /* Orange color */
   font-weight: bold;
 }
 
 /* Make "BIZ" big and white */
 .biz {
-  font-size: 3rem;   /* Larger font size */
-  color: #FFFFFF;    /* White color */
+  font-size: 3rem; /* Larger font size */
+  color: #ffffff; /* White color */
   font-weight: 900;
 }
-
 
 .nav-items {
   display: flex;
@@ -238,7 +310,7 @@ const navigateTo = (route: string) => {
 }
 
 .nav-time {
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-size: 0.9rem;
   opacity: 0.8;
   position: absolute;
@@ -247,8 +319,8 @@ const navigateTo = (route: string) => {
 
 :deep(.premium-btn) {
   background-color: transparent !important;
-  border: 1px solid #E2DFD0 !important;
-  color: #E2DFD0 !important;
+  border: 1px solid #e2dfd0 !important;
+  color: #e2dfd0 !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative;
   overflow: hidden;
@@ -258,20 +330,20 @@ const navigateTo = (route: string) => {
 }
 
 :deep(.premium-btn:hover) {
-  background-color: #E2DFD0 !important;
-  color: #0C0C0C !important;
+  background-color: #e2dfd0 !important;
+  color: #0c0c0c !important;
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(226, 223, 208, 0.2);
 }
 
 :deep(.premium-btn::before) {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #E2DFD0);
+  background: linear-gradient(90deg, transparent, #e2dfd0);
   transition: 0.5s;
 }
 
@@ -292,9 +364,9 @@ const navigateTo = (route: string) => {
 }
 
 .input-group label {
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-weight: 300;
 }
 
@@ -312,7 +384,7 @@ const navigateTo = (route: string) => {
 
 .profile-avatar {
   font-size: 3rem;
-  color: #F97300;
+  color: #f97300;
   background: rgba(249, 115, 0, 0.1);
   padding: 1rem;
   border-radius: 50%;
@@ -321,12 +393,12 @@ const navigateTo = (route: string) => {
 .profile-info h3 {
   margin: 0;
   font-size: 1.5rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
 }
 
 .profile-info p {
   margin: 0.5rem 0 0;
-  color: #F97300;
+  color: #f97300;
   font-size: 0.9rem;
 }
 
@@ -349,18 +421,18 @@ const navigateTo = (route: string) => {
 
 .stat-label {
   font-size: 0.8rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
   opacity: 0.7;
 }
 
 .stat-value {
   font-size: 1.1rem;
   font-weight: 500;
-  color: #E2DFD0;
+  color: #e2dfd0;
 }
 
 .stat-value.positive {
-  color: #22C55E;
+  color: #22c55e;
 }
 
 .profile-settings {
@@ -371,7 +443,7 @@ const navigateTo = (route: string) => {
 
 .profile-settings h4 {
   margin: 0 0 1.5rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
   font-size: 1.1rem;
 }
 
@@ -389,7 +461,7 @@ const navigateTo = (route: string) => {
 
 .ai-avatar {
   font-size: 3rem;
-  color: #F97300;
+  color: #f97300;
   background: rgba(249, 115, 0, 0.1);
   padding: 1rem;
   border-radius: 50%;
@@ -398,12 +470,12 @@ const navigateTo = (route: string) => {
 .ai-info h3 {
   margin: 0;
   font-size: 1.5rem;
-  color: #E2DFD0;
+  color: #e2dfd0;
 }
 
 .ai-info p {
   margin: 0.5rem 0 0;
-  color: #F97300;
+  color: #f97300;
   font-size: 0.9rem;
 }
 
@@ -423,18 +495,18 @@ const navigateTo = (route: string) => {
 
 .feature-card i {
   font-size: 2rem;
-  color: #F97300;
+  color: #f97300;
   margin-bottom: 1rem;
 }
 
 .feature-card h4 {
-  color: #E2DFD0;
+  color: #e2dfd0;
   margin: 0 0 0.5rem;
   font-size: 1rem;
 }
 
 .feature-card p {
-  color: #E2DFD0;
+  color: #e2dfd0;
   opacity: 0.7;
   font-size: 0.9rem;
   margin: 0;
@@ -459,7 +531,7 @@ const navigateTo = (route: string) => {
 
 .message.ai {
   background: rgba(249, 115, 0, 0.1);
-  color: #E2DFD0;
+  color: #e2dfd0;
   max-width: 80%;
 }
 
@@ -478,18 +550,18 @@ const navigateTo = (route: string) => {
 }
 
 :deep(.p-dialog .p-dialog-header) {
-  background: #0C0C0C;
-  color: #E2DFD0;
+  background: #0c0c0c;
+  color: #e2dfd0;
   border-bottom: 1px solid rgba(226, 223, 208, 0.1);
 }
 
 :deep(.p-dialog .p-dialog-content) {
-  background: #0C0C0C;
-  color: #E2DFD0;
+  background: #0c0c0c;
+  color: #e2dfd0;
 }
 
 :deep(.p-dialog .p-dialog-footer) {
-  background: #0C0C0C;
+  background: #0c0c0c;
   border-top: 1px solid rgba(226, 223, 208, 0.1);
 }
 
@@ -502,11 +574,11 @@ const navigateTo = (route: string) => {
   width: 100%;
   background: rgba(226, 223, 208, 0.05) !important;
   border: 1px solid rgba(226, 223, 208, 0.1) !important;
-  color: #E2DFD0 !important;
+  color: #e2dfd0 !important;
 }
 
 :deep(.p-inputtext:enabled:focus) {
   box-shadow: 0 0 0 2px rgba(249, 115, 0, 0.2) !important;
-  border-color: #F97300 !important;
+  border-color: #f97300 !important;
 }
 </style>
